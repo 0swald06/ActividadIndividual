@@ -42,6 +42,15 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
     public void onClick(View v) {
         num1=getIntFromEditText(numero1);
         num2=getIntFromEditText(numero2);
-
+        int id = v.getId();
+        if (id == R.id.btn_suma) {
+            valor.setText(num1 + num2);
+        } else if (id == R.id.btn_resta) {
+            valor.setText(num1 - num2);
+        } else if (id == R.id.btn_multi) {
+            valor.setText(num1 * num2);
+        } else if (id == R.id.btn_divi) {
+            valor.setText(num1 / num2);
+        }
     }
 }
