@@ -24,7 +24,6 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
         btnD=findViewById(R.id.btn_divi);
         numero1=findViewById(R.id.editNum1);
         numero2=findViewById(R.id.editNum2);
-        valor=findViewById(R.id.valor);
 
         btnS.setOnClickListener(this);
         btnR.setOnClickListener(this);
@@ -43,6 +42,6 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
     public void onClick(View v) {
         num1=getIntFromEditText(numero1);
         num2=getIntFromEditText(numero2);
- 
+
     }
 }
