@@ -5,7 +5,11 @@ plugins {
 android {
     namespace 'com.example.actividadindividual'
     compileSdk 33
+    buildFeatures{
 
+        viewBinding=true
+
+    }
     defaultConfig {
         applicationId "com.example.actividadindividual"
         minSdk 24

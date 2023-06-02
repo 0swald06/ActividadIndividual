@@ -2,55 +2,103 @@ package com.example.actividadindividual;
 
 import androidx.appcompat.app.AppCompatActivity;
 
+import android.content.Intent;
 import android.os.Bundle;
+import android.util.Log;
 import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
 import android.widget.TextView;
 import android.widget.Toast;
 
-public class MainActivity extends AppCompatActivity implements View.OnClickListener {
-    Button btnS,btnR,btnM,btnD;
-    EditText numero1,numero2;
-    TextView valor;
-    int num1,num2;
+import com.example.actividadindividual.databinding.ActivityMainBinding;
+
+public class MainActivity extends AppCompatActivity {
+
+    private Button btn_suma;
+    private Button btn_resta;
+    private Button btn_division;
+    private Button btn_multiplicacion;
+
+    private TextView text_respuesta;
+
+    private EditText edit_numero_uno;
+    private EditText edit_numero_dos;
+
+
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
-        btnS=findViewById(R.id.btn_suma);
-        btnR=findViewById(R.id.btn_resta);
-        btnM=findViewById(R.id.btn_multi);
-        btnD=findViewById(R.id.btn_divi);
-        numero1=findViewById(R.id.editNum1);
-        numero2=findViewById(R.id.editNum2);
 
-        btnS.setOnClickListener(this);
-        btnR.setOnClickListener(this);
-        btnM.setOnClickListener(this);
-        btnD.setOnClickListener(this);
-    }
-    public int getIntFromEditText(EditText editText){
-        if (editText.getText().toString().equals("")){
-            Toast.makeText(this,"ingreaw numero",Toast.LENGTH_SHORT).show();
-            return 0;
-        }else
-            return Integer.parseInt(editText.getText().toString());
+        text_respuesta = findViewById(R.id.respuesta);
+
+        edit_numero_uno = findViewById(R.id.numero1);
+        edit_numero_dos = findViewById(R.id.numero2);
+
+
+
+
+
+
+        btn_suma = findViewById(R.id.button_suma);
+        btn_suma.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                text_respuesta.setText( suma( Integer.parseInt(edit_numero_uno.getText().toString()),Integer.parseInt(edit_numero_dos.getText().toString()) )+"");
+            }
+        });
+
+
+        btn_division = findViewById(R.id.button_division);
+        btn_division.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                text_respuesta.setText( division( Integer.parseInt(edit_numero_uno.getText().toString()),Integer.parseInt(edit_numero_dos.getText().toString()) )+"");
+
+            }
+        });
+
+        btn_multiplicacion = findViewById(R.id.button_multiplicacion);
+        btn_multiplicacion.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                text_respuesta.setText( multiplicacion( Integer.parseInt(edit_numero_uno.getText().toString()),Integer.parseInt(edit_numero_dos.getText().toString()) )+"");
+
+            }
+        });
+
+        btn_resta = findViewById(R.id.button_resta);
+        btn_resta.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                text_respuesta.setText( resta( Integer.parseInt(edit_numero_uno.getText().toString()),Integer.parseInt(edit_numero_dos.getText().toString()) )+"");
+
+            }
+        });
 
     }
-    @Override
-    public void onClick(View v) {
-        num1=getIntFromEditText(numero1);
-        num2=getIntFromEditText(numero2);
-        int id = v.getId();
-        if (id == R.id.btn_suma) {
-            valor.setText(num1 + num2);
-        } else if (id == R.id.btn_resta) {
-            valor.setText(num1 - num2);
-        } else if (id == R.id.btn_multi) {
-            valor.setText(num1 * num2);
-        } else if (id == R.id.btn_divi) {
-            valor.setText(num1 / num2);
+
+    public double suma (int a, int b){
+        return a+b;
+    }
+
+    public double resta (int a, int b){
+        return a-b;
+    }
+
+    public double multiplicacion (int a, int b){
+        return a*b;
+    }
+
+    public double division (int a, int b){
+        int respuesta = 0;
+
+        if (b!=0){
+            respuesta=a/b;
         }
+
+        return respuesta;
     }
 }
