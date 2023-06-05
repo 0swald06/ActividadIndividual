@@ -81,14 +81,21 @@ public class MainActivity extends AppCompatActivity {
     }
 
     public double suma (int a, int b){
+
+        Log.d("Prueba 3 "," "+(a+b));
+
         return a+b;
     }
 
     public double resta (int a, int b){
+
+        Log.d("Prueba 3 "," "+(a-b));
         return a-b;
     }
 
     public double multiplicacion (int a, int b){
+
+        Log.d("Prueba 3 "," "+(a*b));
         return a*b;
     }
 
@@ -96,9 +103,10 @@ public class MainActivity extends AppCompatActivity {
         int respuesta = 0;
 
         if (b!=0){
+            Log.d("Prueba 3 "," "+(a/b));
+
             respuesta=a/b;
         }
-
         return respuesta;
     }
 }
